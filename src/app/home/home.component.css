@@ -1,0 +1,105 @@
+.picsum-img-wrapper {
+  margin-top: 40px;
+  background-color: #292525b0;
+}
+.picsum-img-wrapper img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  border: 2px solid black !important;
+}
+.carousel-caption {
+  background-color: #292525b0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.trending-products {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5385;
+  color: #333;
+  text-align: left;
+}
+.mt-50 {
+  margin-top: 50px;
+}
+.mb-50 {
+  margin-bottom: 50px;
+}
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.1875rem;
+}
+
+.card-img-actions {
+  position: relative;
+}
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  text-align: center;
+}
+.card-img {
+  width: 350px;
+}
+.star {
+  color: red;
+}
+.bg-cart {
+  background-color: orange;
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 10px !important;
+}
+.bg-cart:hover {
+  color: #fff;
+}
+.bg-buy {
+  background-color: green;
+  color: #fff;
+  padding-right: 29px;
+}
+.bg-buy:hover {
+  color: #fff;
+}
+a {
+  text-decoration: none !important;
+}
+.description {
+  font-size: 14px;
+}
+.price-detail,
+.category-detail {
+  font-weight: 600;
+  font-size: 17px;
+}
+.featured-class {
+  text-align: center;
+}
+.featured-class h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+.horizonail-border {
+  border-bottom: 3px solid black;
+  width: 151px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 40px;
+}

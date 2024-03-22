@@ -1,0 +1,59 @@
+<ngb-carousel *ngIf="popularProductsList">
+    <ng-template ngbSlide *ngFor="let item of popularProductsList">
+        <a routerLink="detail/{{item.id}}">
+            <div class="picsum-img-wrapper">
+                <img src="{{item.image}}" alt="{{item.name}}" />
+            </div>
+        </a>
+        <div class="carousel-caption">
+            <h3>{{item.name}}</h3>
+            <p>{{item.description}}</p>
+        </div>
+    </ng-template>
+</ngb-carousel>
+<!-- Trending products -->
+<div class="d-flex justify-content-center mt-50 mb-50 trending-products">
+    <div class="row">
+        <div class="featured-class">
+            <h1>Featured Produtcs</h1>
+            <div class="horizonail-border"></div>
+        </div>
+
+        <div class="col-md-4 mt-2" *ngFor="let item of trendingProductsList | filter: searchText">
+            <div class="card">
+                <div class="card-body">
+                    <a routerLink="detail/{{item.id}}">
+                        <div class="card-img-actions">
+                            <img src="{{item.image}}" class="card-img img-fluid" width="96" height="350" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body bg-light text-center">
+                    <div class="mb-2">
+                        <h6 class="font-weight-semibold mb-2">
+                            <a class="text-default mb-2" data-abc="true">{{item.name}}</a>
+                        </h6>
+                        <a class="text-muted description" data-abc="true">{{item.description}}</a>
+                    </div>
+                    <div class="mb-0 price-detail text-muted">
+                        <span>Price: </span>
+                        <span>{{item.price}}</span>
+                    </div>
+
+                    <div class="text-muted mb-3 category-detail">
+                        <span>Category: </span>
+                        <span>{{item.category}}</span>
+                    </div>
+                    <div class="btn-group">
+                        <a routerLink="detail/{{item.id}}">
+                            <button type="button" class="btn bg-cart">View
+                                Detail</button>
+                        </a>
+                        &nbsp;&nbsp;
+                        <button type="button" class="btn bg-cart"> Add to
+                            cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

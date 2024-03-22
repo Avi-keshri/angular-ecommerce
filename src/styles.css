@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: sans-serif;
+}
+.container {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+nav {
+  position: relative;
+  top: 20px;
+}
+.sign-up,
+.login,
+.add-product,
+.update-product {
+  text-align: center;
+}
+.sign-up h1,
+.login h1,
+.add-product h1,
+.update-product h1 {
+  color: blueviolet;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+.add-product p {
+  color: green;
+  font-size: 20px;
+  font-weight: bold;
+}
+.common-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 400px;
+}
+.form-input {
+  padding-left: 20px;
+  height: 30px;
+  margin-bottom: 20px;
+  border: 1px solid blueviolet;
+}
+.form-input-textarea {
+  padding-left: 20px;
+  height: 90px;
+  margin-bottom: 20px;
+  border: 1px solid blueviolet;
+}
+.form-button {
+  height: 30px;
+  border: 1px solid blueviolet;
+  color: blueviolet;
+  cursor: pointer;
+}
+.sign-up p,
+.login p {
+  color: blueviolet;
+  font-size: 15px;
+}
+.sign-up p span,
+.login p span {
+  cursor: pointer;
+}

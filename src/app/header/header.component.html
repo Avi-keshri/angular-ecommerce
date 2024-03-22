@@ -1,0 +1,32 @@
+<nav>
+    <h1><a routerLink="">E-Comm</a></h1>
+    <div class="nav-search" *ngIf="menuType === 'default' || 'user'">
+        <input type="text" placeholder="Search Products" [(ngModel)]="searchTerm" (keyup)="search($event)" #searchItem>
+        <ul>
+            <li></li>
+        </ul>
+        <button (click)="onSearch(searchItem)">Search</button>
+    </div>
+    <div [ngSwitch]="menuType">
+        <ul *ngSwitchCase="'seller'">
+            <li><a routerLink="seller/add-product" style="cursor:pointer;">Add Product</a></li>
+            <li><a routerLink="seller/dashboard" style="cursor:pointer;">Product List</a></li>
+            <li><a>{{sellerName}}</a></li>
+            <li><a (click)="logout()" style="cursor:pointer;">Logout</a></li>
+        </ul>
+        <ul *ngSwitchCase="'user'">
+            <li><a routerLink="seller/auth" style="cursor:pointer;">Seller</a></li>
+            <li><a routerLink="" style="cursor:pointer;">Home</a></li>
+            <li><a>{{userName}}</a></li>
+            <li><a (click)="userLogout()" style="cursor:pointer;">Logout</a></li>
+            <li><a style="cursor:pointer;">Cart({{itemOnCart}})</a></li>
+        </ul>
+        <ul *ngSwitchCase="'default'">
+            <li><a routerLink="seller/auth" style="cursor:pointer;">Seller</a></li>
+            <li><a routerLink="" style="cursor:pointer;">Home</a></li>
+            <li><a routerLink="user-auth" style="cursor:pointer;">Login/Sign Up</a></li>
+            <li><a style="cursor:pointer;">Cart({{itemOnCart}})</a></li>
+        </ul>
+    </div>
+
+</nav>

@@ -1,0 +1,122 @@
+{
+  "seller": [
+    {
+      "id": "1",
+      "name": "Avinash",
+      "email": "kravinash321@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "name": "Abhishek",
+      "email": "abhishek@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "5782",
+      "name": "Rajesh",
+      "password": "123456",
+      "email": "rajesh@gmail.com"
+    },
+    {
+      "id": "9a82",
+      "name": "fdgffg",
+      "password": "12345",
+      "email": "gfdgfg@gmail.com"
+    },
+    {
+      "id": "e106",
+      "name": "gfgfg",
+      "password": "12345",
+      "email": "sdsad@gmail.com"
+    },
+    {
+      "id": "3213",
+      "name": "fgfgfg",
+      "password": "123456",
+      "email": "gfg@gmail.com"
+    },
+    {
+      "id": "5504",
+      "name": "fdsgfg",
+      "password": "gfg@gmail.com",
+      "email": "123456"
+    },
+    {
+      "id": "72fa",
+      "name": "dfdfdfdf",
+      "password": "123456",
+      "email": "dfdsfdsfd@gmail.com"
+    }
+  ],
+  "product": [
+    {
+      "id": "1",
+      "name": "Apple iPhone 13",
+      "category": "Mobile",
+      "color": "Blue",
+      "price": "10000",
+      "description": "The iPhone 13 is Apple's prior-generation iPhone from 2021, and it is two years older than the flagship iPhone 15 models.",
+      "image": "https://assets.hardwarezone.com/img/2016/10/Xiaomi-Mi-MIX-hero.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Boxer Boots For Men",
+      "category": "Shoe",
+      "color": "Red",
+      "price": "5000",
+      "description": "A shoe is an item of footwear intended to protect and comfort the human foot.",
+      "image": "https://c4.wallpaperflare.com/wallpaper/179/733/245/danboard-pair-sneakers-funny-wallpaper-preview.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Quiclean Sneaker Cleaner Premium Foaming Solution",
+      "category": "Shoe Cleaning",
+      "color": "Neutral",
+      "price": "2000",
+      "description": "Quiclean Sneaker Cleaner provides deep cleaning experience and is safe for all types of materials, including Suede, Mesh, Nylon, Polyester, Cotton, Leather, Nubuck, Canvas, Knit, Multi-Material, etc",
+      "image": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/74c441b9-3e3c-4da6-bc1a-68005be6840c.__CR0,0,970,600_PT0_SX970_V1___.png"
+    },
+    {
+      "id": "4",
+      "name": "Acer Desktop Machine",
+      "category": "Laptop",
+      "color": "Grey",
+      "price": "70000",
+      "description": "A laptop, sometimes called a notebook computer by manufacturers, is a battery- or AC-powered personal computer (PC) smaller than a briefcase",
+      "image": "https://i.pinimg.com/originals/0b/5f/c8/0b5fc864c174f4bea7e93892e5eeb00a.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Xiaomi Mi Full Screen TV",
+      "category": "TV",
+      "color": "Black",
+      "price": "80000",
+      "description": "Xiaomi Mi Full Screen TV Pro 43-inch, 55-inch and 65-inch 4K TVs with 8K  video playback announced FoneArena.com Xiaomi Mi Full Screen TV Pro 43-inch",
+      "image": "https://images.imyfone.com/en/images/2021/08/LED_TV(1).png"
+    },
+    {
+      "id": "6",
+      "name": "Mclaren Sports Car",
+      "category": "Car",
+      "color": "Black",
+      "price": "6000",
+      "description": "Automotive body designs are frequently categorized according to the number of doors, the arrangement of seats, and the roof structure. ",
+      "image": "https://swall.teahub.io/photos/small/175-1752487_mclaren-p1-high-quality-background-on-wallpapers-vista.jpg"
+    }
+  ],
+  "user": [
+    {
+      "id": "6b3f",
+      "name": "Rajesh",
+      "password": "123456",
+      "email": "rajesh@gmail.com"
+    },
+    {
+      "id": "31ab",
+      "name": "Rajesh11",
+      "password": "123456",
+      "email": "rajesh11@gmail.com"
+    }
+  ]
+}
