@@ -1,0 +1,73 @@
+<main class="page">
+    <section class="shopping-cart dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2>Shopping Cart</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in,
+                    mattis
+                    vitae leo.</p>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="items">
+                            <div class="product" *ngFor="let cartItem of cartList">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid mx-auto d-block image" src="{{cartItem.image}}">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="info">
+                                            <div class="row">
+                                                <div class="col-md-4 product-name">
+                                                    <div class="product-name">
+                                                        <p>{{cartItem.name}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 quantity">
+                                                    <div>Quantity: <span class="value">{{cartItem.quantity}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 price">
+                                                    <span>${{cartItem.price}}</span>
+                                                </div>
+                                                <div class="col-md-4 remove-button">
+                                                    <button type="button" style="cursor: pointer;"
+                                                        (click)="removeFromCart(cartItem.id)">Remove
+                                                        from cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <div class="summary">
+                            <h3>Summary</h3>
+                            <div class="summary-item"><span class="text">Subtotal</span><span
+                                    class="price">${{cartSummary.subtotal}}</span>
+                            </div>
+                            <div class="summary-item"><span class="text">Discount</span><span
+                                    class="price">${{cartSummary.discount}}</span>
+                            </div>
+                            <div class="summary-item"><span class="text">Delivery Charge</span><span
+                                    class="price">${{cartSummary.delivery}}</span>
+                            </div>
+                            <div class="summary-item"><span class="text">Tax</span><span
+                                    class="price">${{cartSummary.tax}}</span>
+                            </div>
+
+                            <div class="summary-item" style="margin: 10px 0px;"><span class="text">Total</span><span
+                                    class="price">${{cartSummary.total}}</span>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-md btn-block">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

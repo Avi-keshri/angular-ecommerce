@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../data-type';
+import { Cart, Product } from '../data-type';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,13 +13,16 @@ export class ProductDetailComponent implements OnInit {
 
   productId: number;
   productItem: Product;
+  cartItem: Cart;
   productQuantity: number = 1;
   itemOnCartExist: boolean = false;
+  userid: number;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.initialiZation();
+    this.countCartProductFromRemote();
   }
 
   handleQuantity(type: string) {
@@ -32,30 +36,86 @@ export class ProductDetailComponent implements OnInit {
   addToCart() {
     if (this.productItem) {
       this.productItem.quantity = this.productQuantity;
-      this.productService.addToCartItem(this.productItem);
-      this.itemOnCartExist = true;
+      if (localStorage.getItem('user')) {
+        let userData = JSON.parse(localStorage.getItem('user'))[0];
+        this.userid = userData.id;
+        this.cartItem = {
+          ...this.productItem,
+          userid: userData.id,
+        }
+        this.productService.addToCartItemOnRemote(this.cartItem).pipe(take(1))
+          .subscribe(res => {
+            if (res.ok && res.body) {
+              this.countCartProductFromRemote();
+            }
+          }, error => {
+            alert('My Error ' + error);
+          });
+      }
+      else {
+        this.productService.addToCartItemOnLocalStorage(this.productItem);
+        this.itemOnCartExist = true;
+      }
     }
   }
 
   removeFromCart() {
     if (this.productItem) {
-      this.productService.removeFromCartItem(this.productItem);
+      this.productService.removeItemFromLocalStorage(this.productItem);
       this.itemOnCartExist = false;
     }
   }
 
   initialiZation() {
     this.productId = +this.route.snapshot.paramMap.get('id');
-    this.productService.productDetail(this.productId).subscribe(result => {
-      if (result.ok && result.body) {
-        this.productItem = result.body;
-      }
-    }, error => {
-      alert('My Error ' + error);
-    })
-    const itemOnCart = this.productService.productOnLocalCart(this.productId);
-    this.itemOnCartExist = itemOnCart.length > 0 ? true : false;
-    console.log(itemOnCart)
+    this.productService.productDetail(this.productId).pipe(take(1))
+      .subscribe(result => {
+        if (result.ok && result.body) {
+          this.productItem = result.body;
+        }
+      }, error => {
+        alert('My Error ' + error);
+      })
+    this.countCartProductFromLocal();
+    this.countCartPdFromRemote();
+  }
+
+  countCartProductFromLocal() {
+    const itemOnLocalCart = this.productService.productOnLocalCart(this.productId);
+    if (itemOnLocalCart) {
+      this.itemOnCartExist = itemOnLocalCart.length > 0 ? true : false;
+    }
+  }
+
+  countCartPdFromRemote() {
+    if (localStorage.getItem('user')) {
+      let userData = JSON.parse(localStorage.getItem('user'))[0];
+      this.userid = userData.id;
+      this.productService.pdOnRemoteCartBasedOnUDPD(this.productId, userData.id).pipe(take(1))
+        .subscribe(res => {
+          if (res.ok && res.body) {
+            this.itemOnCartExist = res.body.length > 0 ? true : false;
+          }
+        }, error => {
+          alert('My Error ' + error);
+        });
+    }
+  }
+
+  countCartProductFromRemote() {
+    if (localStorage.getItem('user')) {
+      this.countCartPdFromRemote();
+      let userData = JSON.parse(localStorage.getItem('user'))[0];
+      this.userid = userData.id;
+      this.productService.productOnRemoteCartBasedOnUserID(this.userid).pipe(take(1))
+        .subscribe(res => {
+          if (res.ok && res.body) {
+            this.productService.itemOnRemoteCart.next(res.body);
+          }
+        }, error => {
+          alert('My Error ' + error);
+        });
+    }
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../data-type';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -18,21 +19,24 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.productsList();
     this.trendingProductList();
-    this.productService.productList.subscribe(result => {
-      this.searchText = result;
-    })
+    this.productService.productList.pipe(take(1))
+      .subscribe(result => {
+        this.searchText = result;
+      })
   }
 
   productsList() {
-    this.productService.popularProducts().subscribe(result => {
-      if (result.ok) {
-        this.popularProductsList = result.body;
-      }
-    })
+    this.productService.popularProducts().pipe(take(1))
+      .subscribe(result => {
+        if (result.ok) {
+          this.popularProductsList = result.body;
+        }
+      })
   }
   trendingProductList() {
-    this.productService.trendingproducts().subscribe(result => {
-      this.trendingProductsList = result.body
-    })
+    this.productService.trendingproducts().pipe(take(1))
+      .subscribe(result => {
+        this.trendingProductsList = result.body
+      })
   }
 }

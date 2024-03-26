@@ -8,12 +8,14 @@ import { AddProductComponent } from './seller/add-product/add-product.component'
 import { UpdateProductComponent } from './seller/update-product/update-product.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '', component: HomeComponent },
   { path: 'user-auth', component: UserAuthComponent },
   { path: 'detail/:id', component: ProductDetailComponent },
+  { path: 'cart-page', component: CartPageComponent },
   {
     path: 'seller', children: [
       { path: 'dashboard', canActivate: [authGuard], component: DashboardComponent },

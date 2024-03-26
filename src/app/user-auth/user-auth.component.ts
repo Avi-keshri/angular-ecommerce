@@ -25,4 +25,5 @@ export class UserAuthComponent implements OnInit {
   login(userLogin: login) {
     this.userService.userLogin(userLogin);
   }
+
 }

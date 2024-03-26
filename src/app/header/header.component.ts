@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { take } from 'rxjs';
 import { UserService } from '../services/user.service';
@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   userDetail: signUp;
   sellerName: string = '';
   userName: string = '';
+  userid: number;
 
   constructor(private router: Router, private productSrv: ProductService, private userService: UserService) { }
 
@@ -32,6 +33,7 @@ export class HeaderComponent implements OnInit {
   }
   userLogout() {
     localStorage.removeItem('user');
+    this.productSrv.itemOnRemoteCart.next([]);
     this.router.navigate(['user-auth']);
   }
 
@@ -52,7 +54,9 @@ export class HeaderComponent implements OnInit {
             }
             else if (localStorage.getItem('user')) {
               let userData = JSON.parse(localStorage.getItem('user'))[0];
+              this.userid = userData.id;
               this.userName = userData.name;
+              this.countCartProductFromRemote();
               this.menuType = 'user';
             } else {
               this.menuType = 'default';
@@ -61,9 +65,31 @@ export class HeaderComponent implements OnInit {
           }
         }
       });
+    this.countCartProduct();
+  }
 
-    this.productSrv.showItemOnCart.subscribe(result => {
-      console.log(result);
+  countCartProductFromRemote() {
+    this.productSrv.productOnRemoteCartBasedOnUserID(this.userid).pipe(take(1))
+      .subscribe(res => {
+        if (res.ok && res.body) {
+          this.itemOnCart = res.body.length;
+        }
+      }, error => {
+        alert('My Error ' + error);
+      });
+  }
+
+  countCartProduct() {
+    this.productSrv.showItemOnCart.pipe(take(1))
+      .subscribe(result => {
+        this.itemOnCart = result.length;
+      })
+    let cartItem = JSON.parse(localStorage.getItem('localCartItem'));
+    if (cartItem) {
+      this.itemOnCart = cartItem.length;
+    }
+    this.productSrv.itemOnRemoteCart.subscribe(result => {
+      this.itemOnCart = result.length;
     })
   }
 }

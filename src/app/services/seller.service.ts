@@ -49,22 +49,22 @@ export class SellerService {
   }
 
   getProducts() {
-    return this.http.get<Product[]>('http://localhost:3000/product', { observe: 'response' });
+    return this.http.get<Product[]>('http://localhost:3000/products', { observe: 'response' });
   }
 
   addSellerProduct(data: Product) {
-    return this.http.post<Product>('http://localhost:3000/product', data, { observe: 'response' });
+    return this.http.post<Product>('http://localhost:3000/products', data, { observe: 'response' });
   }
 
   showSellerProduct(id: number) {
-    return this.http.get<Product>(`http://localhost:3000/product/${id}`, { observe: 'response' });
+    return this.http.get<Product>(`http://localhost:3000/products/${id}`, { observe: 'response' });
   }
 
   updateSellerProduct(data: Product, id: number) {
-    return this.http.put<Product>(`http://localhost:3000/product/${id}`, data, { observe: 'response' });
+    return this.http.put<Product>(`http://localhost:3000/products/${id}`, data, { observe: 'response' });
   }
 
   deleteItem(id: number) {
-    return this.http.delete(`http://localhost:3000/product/${id}`, { observe: 'response' });
+    return this.http.delete(`http://localhost:3000/products/${id}`, { observe: 'response' });
   }
 }

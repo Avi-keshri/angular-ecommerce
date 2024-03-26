@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { FilterPipe } from './filter.pipe';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     SearchComponent,
     FilterPipe,
     UserAuthComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
