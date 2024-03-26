@@ -91,7 +91,7 @@ export class ProductDetailComponent implements OnInit {
     if (localStorage.getItem('user')) {
       let userData = JSON.parse(localStorage.getItem('user'))[0];
       this.userid = userData.id;
-      this.productService.pdOnRemoteCartBasedOnUDPD(this.productId, userData.id).pipe(take(1))
+      this.productService.getRemoteCartProductBasedOnUDPD(this.productId, userData.id).pipe(take(1))
         .subscribe(res => {
           if (res.ok && res.body) {
             this.itemOnCartExist = res.body.length > 0 ? true : false;
@@ -107,7 +107,7 @@ export class ProductDetailComponent implements OnInit {
       this.countCartPdFromRemote();
       let userData = JSON.parse(localStorage.getItem('user'))[0];
       this.userid = userData.id;
-      this.productService.productOnRemoteCartBasedOnUserID(this.userid).pipe(take(1))
+      this.productService.getRemoteCartProductBasedOnUserID(this.userid).pipe(take(1))
         .subscribe(res => {
           if (res.ok && res.body) {
             this.productService.itemOnRemoteCart.next(res.body);

@@ -63,11 +63,11 @@ export class ProductService {
     }
   }
 
-  productOnRemoteCartBasedOnUserID(userid: number) {
+  getRemoteCartProductBasedOnUserID(userid: number) {
     return this.http.get<Cart[]>(`http://localhost:3000/cart/?userid=${userid}`, { observe: 'response' });
   }
 
-  pdOnRemoteCartBasedOnUDPD(productid: number, userid: number) {
+  getRemoteCartProductBasedOnUDPD(productid: number, userid: number) {
     return this.http.get<Cart[]>(`http://localhost:3000/cart/?id=${productid}&userid=${userid}`, { observe: 'response' });
   }
 
@@ -86,7 +86,7 @@ export class ProductService {
                   if (localCartItem) {
                     localStorage.removeItem('localCartItem');
                     this.showItemOnCart.next([]);
-                    this.productOnRemoteCartBasedOnUserID(userid).pipe(take(1))
+                    this.getRemoteCartProductBasedOnUserID(userid).pipe(take(1))
                       .subscribe(res => {
                         this.itemOnRemoteCart.next(res.body);
                       });

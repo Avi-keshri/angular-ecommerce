@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
   }
 
   countCartProductFromRemote() {
-    this.productSrv.productOnRemoteCartBasedOnUserID(this.userid).pipe(take(1))
+    this.productSrv.getRemoteCartProductBasedOnUserID(this.userid).pipe(take(1))
       .subscribe(res => {
         if (res.ok && res.body) {
           this.itemOnCart = res.body.length;
